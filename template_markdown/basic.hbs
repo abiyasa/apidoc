@@ -1,8 +1,27 @@
 # {{ project.name }} v{{ project.version }}
+
 {{ project.description }}
 
 {{#each data}}
+{{#if type}}
 ## {{group}} - {{title}}
-`{{type}} {{url}}`
+
 {{#if description}}{{{description}}}{{/if}}
+
+### Request
+
+```
+{{type}} {{url}}
+```
+
+### Parameters
+
+| Name      | Type     | Description                                          |
+|-----------|----------|------------------------------------------------------|
+{{#each parameter.fields.Parameter}}| {{field}} | {{type}} | {{#if optional}}**optional**'{{/if}} {{description}} |
+{{/each}}
+
+### Response
+
+{{/if}}
 {{/each}}
