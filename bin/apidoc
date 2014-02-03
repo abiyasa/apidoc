@@ -41,6 +41,12 @@ var argv = optimist
 		describe: "Output dirname."
 	})
 
+	.option("output-markdown", {
+		boolean: true,
+		"default": false,
+		describe: "Output as a markdown file."
+	})
+
 	.option("t", {
 		alias: "template",
 		"default": path.join(__dirname, "../template/"),
@@ -137,6 +143,7 @@ var defaults = {
 	parsers:        transformFilters(argv["parse-parsers"]),
 	workers:        transformFilters(argv["parse-workers"]),
 	simulate:       argv["simulate"],
+	outputToMarkdown: argv["output-markdown"],
 	marked: {
 		gfm:          argv["marked-gfm"],
 		tables:       argv["marked-tables"],
