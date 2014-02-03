@@ -1,0 +1,8 @@
+# {{ project.name }} v{{ project.version }}
+{{ project.description }}
+
+{{#each data}}
+## {{group}} - {{title}}
+`{{type}} {{url}}`
+{{#if description}}{{{description}}}{{/if}}
+{{/each}}
