@@ -42,15 +42,14 @@ var argv = optimist
 	})
 
 	.option("output-markdown", {
-		boolean: true,
-		"default": false,
-		describe: "Output as a markdown file."
+		describe: "Output as a markdown file, define the filename here."
 	})
 
 	.option("t", {
 		alias: "template",
 		"default": path.join(__dirname, "../template/"),
-		describe: "Use template for output files."
+		describe: "Use template for output files. " +
+			"If output-markdown is defined, then template refer to Handlebar template file"
 	})
 
 	.option("v", {
