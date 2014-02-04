@@ -1,6 +1,9 @@
 # {{ project.name }} v{{ project.version }}
 
 {{{ project.description }}}
+{{#if project.generator}}
+Generated with <a href="http://apidocjs.com">apiDoc</a> {{{project.generator.version}}} - {{{project.generator.time}}}
+{{/if}}
 
 {{#each data}}
 {{#if type}}
