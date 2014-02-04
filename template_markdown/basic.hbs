@@ -1,6 +1,6 @@
 # {{ project.name }} v{{ project.version }}
 
-{{ project.description }}
+{{{ project.description }}}
 
 {{#each data}}
 {{#if type}}
@@ -8,20 +8,70 @@
 
 {{#if description}}{{{description}}}{{/if}}
 
+{{! Request URL }}
 ### Request
 
 ```
 {{toUpperCase type}} {{url}}
 ```
 
+{{! Input parameters }}
 ### Parameters
 
 | Name      | Type     | Description                                          |
 |-----------|----------|------------------------------------------------------|
-{{#each parameter.fields.Parameter}}| {{field}} | {{type}} | {{#if optional}}**optional**'{{/if}} {{description}} |
+{{#each parameter.fields.Parameter}}| {{field}} | {{type}} | {{#if optional}}**optional**{{/if}} {{{description}}} |
 {{/each}}
 
-### Response
+{{! Request example }}
+{{#each examples}}
+### {{title}}
 
+```
+{{{content}}}
+```
+{{/each}} {{! end of request example }}
+
+{{! Success fields }}
+{{#each success.fields}}
+### {{@key}}
+
+| Name      | Type     | Description                                          |
+|-----------|----------|------------------------------------------------------|
+{{#each this}}| {{field}} | {{type}} | {{#if optional}}**optional**{{/if}} {{{description}}} |
+{{/each}}
+
+{{/each}} {{! end of success fields }}
+
+{{! Success response example }}
+{{#each success.examples}}
+### {{title}}
+
+```
+{{{content}}}
+```
+{{/each}} {{! end of success response example }}
+
+{{! Error fields }}
+{{#each error.fields}}
+### {{@key}}
+
+| Name      | Type     | Description                                          |
+|-----------|----------|------------------------------------------------------|
+{{#each this}}| {{field}} | {{type}} | {{#if optional}}**optional**{{/if}} {{{description}}} |
+{{/each}}
+
+{{/each}} {{! end of error fields }}
+
+{{! Error response example }}
+{{#each error.examples}}
+### {{title}}
+
+```
+{{{content}}}
+```
+{{/each}} {{! end of error response example }}
+
+{{! end of data }}
 {{/if}}
 {{/each}}
